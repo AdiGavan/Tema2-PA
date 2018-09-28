@@ -33,38 +33,38 @@ class Task {
 	}
 
 	vector<int> get_result() {
-    // Alb - 0, Gri - -1, Negru - -2;
-    vector<int> c(n + 1, 0);
-    vector<int> elemente;
-    // Se adauga un element pe pozitia 0 pentru a incepe indexarea de la 1.
-    elemente.push_back(-1);
+	    // Alb - 0, Gri - -1, Negru - -2;
+	    vector<int> c(n + 1, 0);
+	    vector<int> elemente;
+	    // Se adauga un element pe pozitia 0 pentru a incepe indexarea de la 1.
+	    elemente.push_back(-1);
 
-    /* Pentru a obtine parcurgerea minim lexicografica trebuie sa se
-       introduca vecinii nodurilor de la cel mai mic la cel mai mare in coada,
-       asa ca listele de adiacenta trebuie sortate. */
-    for (int i = 1; i <= n; i++) {
-      std::sort(adj[i].begin(), adj[i].end());
-    }
+	    /* Pentru a obtine parcurgerea minim lexicografica trebuie sa se
+	       introduca vecinii nodurilor de la cel mai mic la cel mai mare in coada,
+	       asa ca listele de adiacenta trebuie sortate. */
+	    for (int i = 1; i <= n; i++) {
+	      std::sort(adj[i].begin(), adj[i].end());
+	    }
 
-    // BFS
-    c[1] = -1;
-    queue<int> q;
-    q.push(1);
-    while(!q.empty()) {
-      int u = q.front();
-      elemente.push_back(u);
-      for (int j = 0; j < adj[u].size(); j++) {
-        // adj[u][j] este vecinul lui u.
-        if (c[adj[u][j]] == 0) {
-            c[adj[u][j]] = -1;
-            q.push(adj[u][j]);
-        }
-      }
-      c[u] = -2;
-      q.pop();
-    }
+	    // BFS
+	    c[1] = -1;
+	    queue<int> q;
+	    q.push(1);
+	    while(!q.empty()) {
+	      int u = q.front();
+	      elemente.push_back(u);
+	      for (int j = 0; j < adj[u].size(); j++) {
+		// adj[u][j] este vecinul lui u.
+		if (c[adj[u][j]] == 0) {
+		    c[adj[u][j]] = -1;
+		    q.push(adj[u][j]);
+		}
+	      }
+	      c[u] = -2;
+	      q.pop();
+	    }
 
-    return elemente;
+    	    return elemente;
 	}
 
 	void print_output(vector<int> result) {
