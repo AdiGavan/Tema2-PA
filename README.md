@@ -1,5 +1,7 @@
 "Copyright [2018] Gavan Adrian-George, 324CA"
+
 Nume, prenume: Gavan, Adrian-George
+
 Grupa, seria: 324CA
 
 Tema 2 PA - Grafuri
